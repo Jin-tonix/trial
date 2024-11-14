@@ -30,7 +30,7 @@ class RAGHelper:
 
 # YouTube에서 운동 영상 URL을 검색하는 함수 (YouTube API 사용)
 def get_youtube_video_urls(query, max_results=5):
-    youtube_api_key = "AIzaSyC8d1QRyB46bLvDRzo95YxJX7HzZrsKkZc"  # Your API key
+    youtube_api_key = ""  # Your API key
     youtube = build("youtube", "v3", developerKey=youtube_api_key)
 
     # 한국어로 우선 검색
