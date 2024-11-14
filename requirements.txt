@@ -1,5 +1,7 @@
 fastapi
-pydantic
 uvicorn
 transformers
 torch
+aiohttp
+faiss-cpu
+datasets
