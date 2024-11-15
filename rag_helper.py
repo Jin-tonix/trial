@@ -1,6 +1,11 @@
+import os
 from elasticsearch import Elasticsearch
+import PyPDF2
+import json
 
-# RAGHelper 클래스
+# Elasticsearch 설정
+es = Elasticsearch("http://localhost:9200")
+
 class RAGHelper:
     def __init__(self):
         self.es = Elasticsearch("http://localhost:9200")
@@ -39,3 +44,15 @@ class RAGHelper:
             }
         })
         return [hit["_source"]["text"] for hit in results["hits"]["hits"]]  # PDF에서 추출한 텍스트를 반환
+
+    def search_json_documents(self, query):
+        # Elasticsearch에서 JSON 데이터를 검색
+        results = self.es.search(index="json_data", body={
+            "query": {
+                "multi_match": {
+                    "query": query,
+                    "fields": ["content", "title", "description"]  # 필요한 필드를 검색
+                }
+            }
+        })
+        return [hit["_source"] for hit in results["hits"]["hits"]]  # JSON 데이터를 반환

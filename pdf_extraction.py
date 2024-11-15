@@ -31,7 +31,7 @@ def index_pdf_text(pdf_path, document_id):
     except Exception as e:
         print(f"인덱싱 오류: {e}")
 
-# 두 개의 PDF 파일을 처리하는 함수
+# 여러 개의 PDF 파일을 처리하는 함수
 def process_multiple_pdfs(pdf_files):
     for pdf_file in pdf_files:
         document_id = os.path.basename(pdf_file)  # 파일 이름을 document ID로 사용
@@ -42,5 +42,5 @@ if __name__ == "__main__":
     pdf_folder = "pdfs/"
     pdf_files = [os.path.join(pdf_folder, f) for f in os.listdir(pdf_folder) if f.endswith(".pdf")]
     
-    # 두 개의 PDF 파일을 처리
+    # 여러 PDF 파일을 처리
     process_multiple_pdfs(pdf_files)
